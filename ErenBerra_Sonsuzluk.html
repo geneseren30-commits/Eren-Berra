@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eren ❤️ Berra | Sonsuz Aşk</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --p: #ff4e8a; --s: #ff9ecb; }
+        body, html { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(45deg, #ff4e8a, #8e44ad); background-size: 400% 400%; animation: grad 15s infinite; color: white; scroll-behavior: smooth; overflow-x: hidden; }
+        @keyframes grad { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+        /* Kilit Ekranı */
+        #lock { position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; transition: 1s; }
+        input { padding: 15px; border-radius: 50px; border: 2px solid var(--p); text-align: center; font-size: 1rem; width: 240px; outline: none; margin-bottom: 20px; background: rgba(255,255,255,0.1); color: white; }
+        
+        #content { display: none; opacity: 0; padding: 20px; max-width: 450px; margin: 0 auto; }
+        
+        .section { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 30px; padding: 25px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; }
+
+        /* Polaroid Kart Stili */
+        .story-card { margin-top: 25px; border-radius: 10px; overflow: hidden; background: #fff; color: #333; padding: 15px 15px 30px 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); transition: 0.4s; }
+        .story-card img { width: 100%; border-radius: 5px; filter: contrast(1.1); }
+        .story-card p { font-family: 'Dancing Script', cursive; font-size: 1.5rem; margin-top: 20px; color: #d63384; }
+
+        h1, h2 { font-family: 'Dancing Script', cursive; }
+        h1 { font-size: 3.5rem; margin: 10px 0; }
+        h2 { font-size: 2.2rem; color: var(--s); }
+
+        .counter { font-size: 1.2rem; font-weight: 600; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; display: inline-block; margin: 10px 0; }
+        .btn { padding: 12px 35px; border-radius: 50px; border: none; background: var(--p); color: white; font-weight: 600; cursor: pointer; transition: 0.3s; margin-top: 15px; }
+
+        ul { list-style: none; padding: 0; text-align: left; }
+        li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; }
+        li::before { content: '🍒'; margin-right: 15px; }
+
+        .floating-heart { position: fixed; pointer-events: none; animation: flyUp linear forwards; z-index: 1; }
+        @keyframes flyUp { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+    </style>
+</head>
+<body onclick="createBurst(event)">
+
+    <div id="lock">
+        <h1 style="color: white;">Sonsuzluğa hoş geldin...</h1>
+        <input type="password" id="pass" placeholder="Şifremiz? (2110)">
+        <button class="btn" onclick="openLove()">Sürprizi Aç ❤️</button>
+    </div>
+
+    <div id="content">
+        <div class="section">
+            <span class="counter" id="dayCounter">...</span>
+            <h1>Eren ❤️ Berra</h1>
+            <p>"Seninle tanıştığımız 21 Ekim, hayatımın en güzel günüydü. O günden beri kalbim sadece senin için atıyor."</p>
+        </div>
+
+        <div class="section">
+            <h2>Bizim Dünyamız</h2>
+            
+            <div class="story-card">
+                <img src="https://resmim.net/cdn/2024/05/20/SizinPolaroidResminiz.jpg" alt="Aşk">
+                <p>En güzel manzaram senin gülüşün...</p>
+            </div>
+
+            <div class="story-card" style="transform: rotate(2deg);">
+                <img src="https://resmim.net/cdn/2024/05/20/SizinAynaResminiz.jpg" alt="Beraber">
+                <p>Her anımda, her yanımda sen varsın.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Neden Sen?</h2>
+            <ul>
+                <li>Gözlerindeki ışık dünyamı aydınlattığı için.</li>
+                <li>Gülüşünle bana her şeyi unutturduğun için.</li>
+                <li>Elimi hiç bırakmadığın için.</li>
+                <li>Hayatıma 'iyiki'leri getirdiğin için...</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Seni Seviyorum</h2>
+            <p style="font-style: italic; font-size: 0.9rem; line-height: 1.8;">
+                Canım Berra, seninle geçen her gün bir mucize. Bu site bizim aşkımızın küçük bir hatırası olsun. 
+                Seni sonsuza dek sevmeye ve korumaya söz veriyorum.
+            </p>
+            <p style="font-family: 'Dancing Script'; font-size: 2rem;">Sonsuza dek biz...</p>
+            <button class="btn" onclick="alert('Seni çok seviyorum bitanem! ❤️')">Bana Tıkla ✨</button>
+        </div>
+    </div>
+
+    <audio id="music" loop><source src="https://www.chosic.com/wp-content/uploads/2021/04/Rain-and-Flowers-chosic.com_.mp3" type="audio/mpeg"></audio>
+
+    <script>
+        function updateCounter() {
+            const start = new Date("2024-10-21");
+            const now = new Date();
+            const diff = now - start;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById("dayCounter").innerText = `${days} Gündür Seninle...`;
+        }
+
+        function openLove() {
+            if(document.getElementById("pass").value === "2110") {
+                document.getElementById("music").play();
+                updateCounter();
+                document.getElementById("lock").style.opacity = "0";
+                setTimeout(() => {
+                    document.getElementById("lock").style.display = "none";
+                    const c = document.getElementById("content");
+                    c.style.display = "block";
+                    setTimeout(() => { c.style.opacity = "1"; }, 50);
+                }, 1000);
+            } else { alert("Şifre yanlış aşkım!"); }
+        }
+
+        function spawnHeart() {
+            const h = document.createElement('div');
+            h.innerHTML = '❤️'; h.className = 'floating-heart';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.top = '100vh';
+            h.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            h.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 7000);
+        }
+        setInterval(spawnHeart, 400);
+
+        function createBurst(e) {
+            for(let i=0; i<6; i++) {
+                const b = document.createElement('div');
+                b.innerHTML = '💖'; b.className = 'floating-heart';
+                b.style.left = e.clientX + 'px'; b.style.top = e.clientY + 'px';
+                document.body.appendChild(b);
+                const dX = (Math.random()-0.5)*200; const dY = (Math.random()-0.5)*200;
+                b.animate([{transform:'scale(1.2)', opacity:1}, {transform:`translate(${dX}px, ${dY}px) scale(0)`, opacity:0}], {duration:1000});
+                setTimeout(() => b.remove(), 1000);
+            }
+        }
+    </script>
+</body>
+</html>
