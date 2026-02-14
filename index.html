@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eren ❤️ Berra | Sonsuz Aşk</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root { --p:#ff4e8a; --s:#ff9ecb; }
+
+body,html{
+margin:0;padding:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(45deg,#ff4e8a,#8e44ad);
+background-size:400% 400%;
+animation:grad 12s infinite;
+color:white;
+overflow-x:hidden;
+}
+
+@keyframes grad{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+/* Lock Screen */
+#lock{
+position:fixed; inset:0;
+background:rgba(0,0,0,0.95);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:1000;
+transition:1s;
+}
+
+input{
+padding:15px;
+border-radius:50px;
+border:2px solid var(--p);
+background:rgba(255,255,255,0.1);
+color:white;
+text-align:center;
+font-size:1rem;
+margin-bottom:20px;
+}
+
+.btn{
+padding:12px 35px;
+border-radius:50px;
+border:none;
+background:var(--p);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+background:#ff2f74;
+}
+
+#content{
+display:none;
+opacity:0;
+padding:20px;
+max-width:450px;
+margin:0 auto;
+transition:1s;
+}
+
+.section{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+border-radius:30px;
+padding:25px;
+margin-bottom:40px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1,h2{
+font-family:'Dancing Script',cursive;
+}
+
+h1{font-size:3rem;}
+h2{font-size:2rem;color:var(--s);}
+
+.counter{
+margin:15px 0;
+font-weight:600;
+background:rgba(255,255,255,0.2);
+padding:10px 20px;
+border-radius:50px;
+display:inline-block;
+}
+
+.typing{
+border-right:2px solid white;
+white-space:nowrap;
+overflow:hidden;
+}
+
+.secret{
+display:none;
+margin-top:15px;
+font-style:italic;
+animation:fadeIn 1s forwards;
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+/* Floating Hearts */
+.floating-heart{
+position:fixed;
+pointer-events:none;
+animation:flyUp linear forwards;
+}
+
+@keyframes flyUp{
+to{
+transform:translateY(-110vh) rotate(360deg);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body onclick="burst(event)">
+
+<div id="lock">
+<h1 id="welcome" class="typing"></h1>
+<input type="password" id="pass" placeholder="Şifremiz? (2110)">
+<button class="btn" onclick="openLove()">Sürprizi Aç ❤️</button>
+</div>
+
+<div id="content">
+
+<div class="section">
+<div class="counter" id="counter"></div>
+<h1>Eren ❤️ Berra</h1>
+<p>Sen hayatıma gelen en güzel mucizesin...</p>
+</div>
+
+<div class="section">
+<h2>Neden Sen?</h2>
+<ul style="list-style:none;padding:0;text-align:left;">
+<li>💖 Gözlerin dünyamı aydınlattığı için</li>
+<li>💖 Gülüşünle her şeyi unutturduğun için</li>
+<li>💖 Elimi hiç bırakmadığın için</li>
+<li>💖 Hayatıma iyikiler kattığın için</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>Sonsuza Dek...</h2>
+<button class="btn" onclick="showSecret()">Kalbimin Sırrı 💌</button>
+<p id="secretText" class="secret">
+Seni bugün değil, her gün yeniden seviyorum.  
+Ve sonsuza kadar sevmeye devam edeceğim...
+</p>
+</div>
+
+</div>
+
+<audio id="music" loop>
+<source src="https://www.chosic.com/wp-content/uploads/2021/04/Rain-and-Flowers-chosic.com_.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* Typing Effect */
+const text="Sonsuzluğa hoş geldin...";
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("welcome").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,80);
+}
+}
+type();
+
+/* Counter */
+function updateCounter(){
+const start=new Date("2024-10-21T00:00:00");
+const now=new Date();
+const diff=now-start;
+
+const days=Math.floor(diff/(1000*60*60*24));
+const hours=Math.floor((diff/(1000*60*60))%24);
+const minutes=Math.floor((diff/(1000*60))%60);
+
+document.getElementById("counter").innerText=
+`${days} Gün ${hours} Saat ${minutes} Dakikadır Seninleyim ❤️`;
+}
+
+setInterval(updateCounter,60000);
+
+/* Open */
+function openLove(){
+if(document.getElementById("pass").value==="2110"){
+document.getElementById("music").play();
+updateCounter();
+document.getElementById("lock").style.opacity="0";
+setTimeout(()=>{
+document.getElementById("lock").style.display="none";
+const c=document.getElementById("content");
+c.style.display="block";
+setTimeout(()=>{c.style.opacity="1"},100);
+},1000);
+}else{
+alert("Şifre yanlış ❤️");
+}
+}
+
+/* Secret */
+function showSecret(){
+document.getElementById("secretText").style.display="block";
+}
+
+/* Floating hearts */
+function spawn(){
+const h=document.createElement("div");
+h.innerHTML="❤️";
+h.className="floating-heart";
+h.style.left=Math.random()*100+"vw";
+h.style.top="100vh";
+h.style.fontSize=(Math.random()*20+15)+"px";
+h.style.animationDuration=(Math.random()*3+4)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),7000);
+}
+setInterval(spawn,400);
+
+/* Click burst */
+function burst(e){
+for(let j=0;j<6;j++){
+const b=document.createElement("div");
+b.innerHTML="💖";
+b.className="floating-heart";
+b.style.left=e.clientX+"px";
+b.style.top=e.clientY+"px";
+document.body.appendChild(b);
+
+const dx=(Math.random()-0.5)*200;
+const dy=(Math.random()-0.5)*200;
+
+b.animate([
+{transform:'scale(1)',opacity:1},
+{transform:`translate(${dx}px,${dy}px) scale(0)`,opacity:0}
+],{duration:1000});
+
+setTimeout(()=>b.remove(),1000);
+}
+}
+
+</script>
+</body>
+</html>
